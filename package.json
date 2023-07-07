@@ -1,6 +1,6 @@
 {
   "name": "shape-overlays",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Multi-layered SVG shape overlays that are dynamically generated with adjustable properties are used in creating transitions in SPA or for designing drawer menus",
   "author": "ux-ui.pro",
   "license": "MIT",
