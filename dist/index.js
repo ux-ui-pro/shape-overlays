@@ -15,9 +15,9 @@ class $4fa36e821943b400$export$2e2bcd8739ae039 {
     constructor(options = {}){
         const { svgClass: svgClass , pathClass: pathClass , numberPoints: numberPoints = 5 , delayPoints: delayPoints = 0.3 , delayPaths: delayPaths = 0.2 , duration: duration = 1 , ease: ease = "power2.inOut"  } = options;
         this.gsap = $4fa36e821943b400$export$2e2bcd8739ae039.gsap || window.gsap;
-        this.svg = document.querySelector(svgClass);
+        this.svg = document.querySelector(`.${svgClass}`);
         this.path = [
-            ...this.svg?.querySelectorAll(pathClass) || []
+            ...this.svg?.querySelectorAll(`.${pathClass}`) || []
         ];
         this.numberPoints = numberPoints;
         this.numberPaths = this.path.length;
@@ -29,8 +29,12 @@ class $4fa36e821943b400$export$2e2bcd8739ae039 {
         this.pointsDelay = [];
         this.allPoints = [];
         if (!this.svg) return;
+        this.svg.classList.add(`${svgClass}--initialize`);
         this.animation();
         this.paths();
+    }
+    totalDuration() {
+        return Math.round(this.tl.totalDuration() * 1000);
     }
     animation() {
         this.tl = gsap.timeline({
@@ -83,13 +87,13 @@ class $4fa36e821943b400$export$2e2bcd8739ae039 {
             this.update();
         }
     }
-    open() {
+    entry() {
         if (!this.tl.isActive()) {
             this.isOpened = true;
             this.update();
         }
     }
-    close() {
+    leave() {
         if (!this.tl.isActive()) {
             this.isOpened = false;
             this.update();

@@ -16,8 +16,8 @@ export default class ShapeOverlays {
 
 		this.gsap = ShapeOverlays.gsap || window.gsap
 
-		this.svg = document.querySelector(svgClass)
-		this.path = [...(this.svg?.querySelectorAll(pathClass) || [])]
+		this.svg = document.querySelector(`.${svgClass}`)
+		this.path = [...(this.svg?.querySelectorAll(`.${pathClass}`) || [])]
 		this.numberPoints = numberPoints
 		this.numberPaths = this.path.length
 		this.delayPoints = delayPoints
@@ -30,8 +30,14 @@ export default class ShapeOverlays {
 
 		if (!this.svg) return
 
+		this.svg.classList.add(`${svgClass}--initialize`)
+
 		this.animation()
 		this.paths()
+	}
+
+	totalDuration() {
+		return Math.round(this.tl.totalDuration() * 1000)
 	}
 
 	animation() {
@@ -106,7 +112,7 @@ export default class ShapeOverlays {
 		}
 	}
 
-	open() {
+	entry() {
 		if (!this.tl.isActive()) {
 			this.isOpened = true
 
@@ -114,7 +120,7 @@ export default class ShapeOverlays {
 		}
 	}
 
-	close() {
+	leave() {
 		if (!this.tl.isActive()) {
 			this.isOpened = false
 
