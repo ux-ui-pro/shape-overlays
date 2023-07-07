@@ -63,7 +63,7 @@ class $4fa36e821943b400$export$2e2bcd8739ae039 {
             path.setAttribute("d", d);
         });
     };
-    toggle() {
+    update() {
         this.tl.progress(0).clear();
         for(let i = 0; i < this.numberPoints; i++)this.pointsDelay[i] = Math.random() * this.delayPoints;
         for(let i = 0; i < this.numberPaths; i++){
@@ -77,10 +77,22 @@ class $4fa36e821943b400$export$2e2bcd8739ae039 {
             }
         }
     }
-    onClick() {
+    toggle() {
         if (!this.tl.isActive()) {
             this.isOpened = !this.isOpened;
-            this.toggle();
+            this.update();
+        }
+    }
+    open() {
+        if (!this.tl.isActive()) {
+            this.isOpened = true;
+            this.update();
+        }
+    }
+    close() {
+        if (!this.tl.isActive()) {
+            this.isOpened = false;
+            this.update();
         }
     }
 }

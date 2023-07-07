@@ -77,7 +77,7 @@ export default class ShapeOverlays {
 		})
 	}
 
-	toggle() {
+	update() {
 		this.tl.progress(0).clear()
 
 		for (let i = 0; i < this.numberPoints; i++) {
@@ -98,11 +98,27 @@ export default class ShapeOverlays {
 		}
 	}
 
-	onClick() {
+	toggle() {
 		if (!this.tl.isActive()) {
 			this.isOpened = !this.isOpened
 
-			this.toggle()
+			this.update()
+		}
+	}
+
+	open() {
+		if (!this.tl.isActive()) {
+			this.isOpened = true
+
+			this.update()
+		}
+	}
+
+	close() {
+		if (!this.tl.isActive()) {
+			this.isOpened = false
+
+			this.update()
 		}
 	}
 }
