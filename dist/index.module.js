@@ -1,69 +1,78 @@
 class $cf838c15c8b009ba$export$2e2bcd8739ae039 {
-    static registerGSAP(gsap) {
-        $cf838c15c8b009ba$export$2e2bcd8739ae039.gsap = gsap;
+    static registerGSAP(gsap1) {
+        $cf838c15c8b009ba$export$2e2bcd8739ae039.gsap = gsap1;
     }
     constructor(options = {}){
-        const { ease: ease = 0.15  } = options;
+        const { svgClass: svgClass , pathClass: pathClass , numberPoints: numberPoints = 5 , delayPoints: delayPoints = 0.3 , delayPaths: delayPaths = 0.2 , duration: duration = 1 , ease: ease = "power2.inOut"  } = options;
         this.gsap = $cf838c15c8b009ba$export$2e2bcd8739ae039.gsap || window.gsap;
-        this.cursorFollower = this.getFollowerElement();
-        this.cursorStyle = this.cursorFollower.querySelector(".cursor-style");
+        this.svg = document.querySelector(svgClass);
+        this.path = [
+            ...this.svg?.querySelectorAll(pathClass) || []
+        ];
+        this.numberPoints = numberPoints;
+        this.numberPaths = this.path.length;
+        this.delayPoints = delayPoints;
+        this.delayPaths = delayPaths;
+        this.duration = duration;
         this.ease = ease;
-        this.pos = {
-            x: window.innerWidth / 2,
-            y: window.innerHeight / 2
-        };
-        this.mouse = {
-            x: this.pos.x,
-            y: this.pos.y
-        };
-        this.xSet = this.gsap.quickSetter(this.cursorFollower, "x", "px");
-        this.ySet = this.gsap.quickSetter(this.cursorFollower, "y", "px");
-        this.animationId = null;
-        window.addEventListener("pointermove", this.move.bind(this));
-        window.addEventListener("pointerover", this.style.bind(this));
+        this.isOpened = false;
+        this.pointsDelay = [];
+        this.allPoints = [];
+        if (!this.svg) return;
         this.animation();
-    }
-    getFollowerElement() {
-        return document.querySelector("[data-cursor-follower]") || (()=>{
-            const cursorFollower = document.createElement("div");
-            cursorFollower.setAttribute("data-cursor-follower", "");
-            cursorFollower.classList.add("cursor-follower");
-            const cursorStyle = document.createElement("div");
-            cursorStyle.classList.add("cursor-style");
-            cursorFollower.appendChild(cursorStyle);
-            document.body.appendChild(cursorFollower);
-            return cursorFollower;
-        })();
-    }
-    move(e) {
-        this.mouse.x = e.x;
-        this.mouse.y = e.y;
-    }
-    style(e) {
-        let target = e.target;
-        while(target && (!target.dataset || !target.dataset.cursorStyle) && target !== document.body)target = target.parentNode;
-        if (target) {
-            this.cursorStyle.className = this.cursorStyle.className.replace(/ ?cursor-style--\S*/g, "").trim();
-            const cursorStyle = target.dataset && target.dataset.cursorStyle || "default";
-            this.cursorStyle.classList.add(`cursor-style--${cursorStyle}`);
-        }
+        this.paths();
+        this.toggle();
     }
     animation() {
-        const animate = ()=>{
-            const dt = 1.0 - Math.pow(this.ease, 0.05);
-            this.pos.x += (this.mouse.x - this.pos.x) * dt;
-            this.pos.y += (this.mouse.y - this.pos.y) * dt;
-            this.xSet(this.pos.x);
-            this.ySet(this.pos.y);
-            this.animationId = requestAnimationFrame(animate);
-        };
-        this.animationId = requestAnimationFrame(animate);
+        this.tl = gsap.timeline({
+            onUpdate: this.render,
+            defaults: {
+                ease: this.ease,
+                duration: this.duration
+            }
+        });
     }
-    destroy() {
-        cancelAnimationFrame(this.animationId);
-        window.removeEventListener("pointermove", this.move.bind(this));
-        window.removeEventListener("pointerover", this.style.bind(this));
-        this.cursorFollower.remove();
+    paths() {
+        this.allPoints = [];
+        for(let i = 0; i < this.numberPaths; i++){
+            const points = [];
+            for(let j = 0; j < this.numberPoints; j++)points.push(100);
+            this.allPoints.push(points);
+        }
+    }
+    render = ()=>{
+        this.path.map((path, i)=>{
+            const points = this.allPoints[i];
+            let d = "";
+            d += this.isOpened ? `M 0 0 V ${points[0]} C` : `M 0 ${points[0]} C`;
+            for(let j = 0; j < this.numberPoints - 1; j++){
+                let p = (j + 1) / (this.numberPoints - 1) * 100;
+                let cp = p - 1 / (this.numberPoints - 1) * 100 / 2;
+                d += ` ${cp} ${points[j]} ${cp} ${points[j + 1]} ${p} ${points[j + 1]}`;
+            }
+            d += this.isOpened ? ` V 100 H 0` : ` V 0 H 0`;
+            path.setAttribute("d", d);
+        });
+    };
+    toggle() {
+        this.tl.progress(0).clear();
+        for(let i = 0; i < this.numberPoints; i++)this.pointsDelay[i] = Math.random() * this.delayPoints;
+        for(let i = 0; i < this.numberPaths; i++){
+            const points = this.allPoints[i];
+            const pathDelay = this.delayPaths * (this.isOpened ? i : this.numberPaths - i - 1);
+            for(let j = 0; j < this.numberPoints; j++){
+                const delay = this.pointsDelay[j];
+                this.tl.to(points, {
+                    [j]: 0
+                }, delay + pathDelay);
+            }
+        }
+    }
+    onClick() {
+        if (!this.tl.isActive()) {
+            this.isOpened = !this.isOpened;
+            this.toggle();
+        }
     }
 }
 
