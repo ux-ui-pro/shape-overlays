@@ -32,17 +32,25 @@ import ShapeOverlays from 'shape-overlays'
 ShapeOverlays.registerGSAP(gsap)
 
 const overlay = new ShapeOverlays({
-	svgClass: '.svg-overlay',
-	pathClass: '.svg-overlay path',
+	svgClass: 'svg-overlay',
+	pathClass: 'svg-overlay path',
 	numberPoints: 4,
 	delayPoints: 0.7,
 	delayPaths: 0.25,
 	duration: 1.2,
 	ease: 'power2.inOut'
 })
+```
+```javascript
+overlay.update()
 
-document.querySelector('.button')
-	.addEventListener('click', () => overlay.onClick())
+overlay.toggle()
+
+overlay.entry()
+
+overlay.leave()
+
+overlay.totalDuration()
 ```
 <br>
 
