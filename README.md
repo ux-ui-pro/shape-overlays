@@ -2,7 +2,8 @@
 <br>
 
 <h1>shape-overlays</h1>
-<p><sup>Multi-layered SVG shape overlays that are dynamically generated with adjustable properties are used in creating transitions in SPA or for designing drawer menus.<br>
+<p><sup>Multi-layered SVG shape overlays that are dynamically generated with adjustable<br>
+properties are used in creating transitions in SPA or for designing drawer menus<br>
 Original idea by <a href="https://www.tplh.net/">Yoichi Kobayashi</a></sup></p>
 
 [![npm](https://img.shields.io/npm/v/shape-overlays.svg?colorB=brightgreen)](https://www.npmjs.com/package/shape-overlays)
