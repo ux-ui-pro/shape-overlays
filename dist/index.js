@@ -31,7 +31,6 @@ class $4fa36e821943b400$export$2e2bcd8739ae039 {
         if (!this.svg) return;
         this.animation();
         this.paths();
-        this.toggle();
     }
     animation() {
         this.tl = gsap.timeline({

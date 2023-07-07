@@ -32,7 +32,6 @@ export default class ShapeOverlays {
 
 		this.animation()
 		this.paths()
-		this.toggle()
 	}
 
 	animation() {
