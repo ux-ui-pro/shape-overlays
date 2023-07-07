@@ -1,0 +1,30 @@
+{
+  "name": "shape-overlays",
+  "version": "0.0.1",
+  "description": "Multi-layered SVG shape overlays that are dynamically generated with adjustable properties are used in creating transitions in SPA or for designing drawer menus",
+  "author": "ux-ui.pro",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ux-ui-pro/shape-overlays.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ux-ui-pro/shape-overlays/issues"
+  },
+  "source": "src/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.module.js",
+  "scripts": {
+    "serve": "parcel watch",
+    "build": "parcel build",
+    "clean": "rm -rf dist .parcel-cache"
+  },
+  "devDependencies": {
+    "parcel": "~2.9.2"
+  },
+  "keywords": [
+    "shape",
+    "overlays",
+    "GSAP"
+  ]
+}
