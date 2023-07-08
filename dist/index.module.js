@@ -1,9 +1,9 @@
 class $cf838c15c8b009ba$export$2e2bcd8739ae039 {
-    static registerGSAP(gsap1) {
-        $cf838c15c8b009ba$export$2e2bcd8739ae039.gsap = gsap1;
+    static registerGSAP(gsap) {
+        $cf838c15c8b009ba$export$2e2bcd8739ae039.gsap = gsap;
     }
     constructor(options = {}){
-        const { svgClass: svgClass , pathClass: pathClass , numberPoints: numberPoints = 5 , delayPoints: delayPoints = 0.3 , delayPaths: delayPaths = 0.2 , duration: duration = 1 , ease: ease = "power2.inOut"  } = options;
+        const { svgClass: svgClass , pathClass: pathClass , numberPoints: numberPoints = 4 , delayPoints: delayPoints = 0.3 , delayPaths: delayPaths = 0.25 , duration: duration = 1 , ease: ease = "none"  } = options;
         this.gsap = $cf838c15c8b009ba$export$2e2bcd8739ae039.gsap || window.gsap;
         this.svg = document.querySelector(`.${svgClass}`);
         this.path = [
@@ -18,22 +18,19 @@ class $cf838c15c8b009ba$export$2e2bcd8739ae039 {
         this.isOpened = false;
         this.pointsDelay = [];
         this.allPoints = [];
-        if (!this.svg) return;
-        this.svg.classList.add(`${svgClass}--initialize`);
-        this.animation();
-        this.paths();
-    }
-    totalDuration() {
-        return Math.round(this.tl.totalDuration() * 1000);
-    }
-    animation() {
-        this.tl = gsap.timeline({
+        this.tl = this.gsap.timeline({
             onUpdate: this.render,
             defaults: {
                 ease: this.ease,
                 duration: this.duration
             }
         });
+        if (!this.svg) return;
+        this.svg.classList.add(`${svgClass}--initialize`);
+        this.paths();
+    }
+    totalDuration() {
+        return Math.round(this.tl.totalDuration() * 1000);
     }
     paths() {
         this.allPoints = [];

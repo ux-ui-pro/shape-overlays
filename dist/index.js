@@ -9,11 +9,11 @@ $parcel$defineInteropFlag(module.exports);
 
 $parcel$export(module.exports, "default", () => $4fa36e821943b400$export$2e2bcd8739ae039);
 class $4fa36e821943b400$export$2e2bcd8739ae039 {
-    static registerGSAP(gsap1) {
-        $4fa36e821943b400$export$2e2bcd8739ae039.gsap = gsap1;
+    static registerGSAP(gsap) {
+        $4fa36e821943b400$export$2e2bcd8739ae039.gsap = gsap;
     }
     constructor(options = {}){
-        const { svgClass: svgClass , pathClass: pathClass , numberPoints: numberPoints = 5 , delayPoints: delayPoints = 0.3 , delayPaths: delayPaths = 0.2 , duration: duration = 1 , ease: ease = "power2.inOut"  } = options;
+        const { svgClass: svgClass , pathClass: pathClass , numberPoints: numberPoints = 4 , delayPoints: delayPoints = 0.3 , delayPaths: delayPaths = 0.25 , duration: duration = 1 , ease: ease = "none"  } = options;
         this.gsap = $4fa36e821943b400$export$2e2bcd8739ae039.gsap || window.gsap;
         this.svg = document.querySelector(`.${svgClass}`);
         this.path = [
@@ -28,22 +28,19 @@ class $4fa36e821943b400$export$2e2bcd8739ae039 {
         this.isOpened = false;
         this.pointsDelay = [];
         this.allPoints = [];
-        if (!this.svg) return;
-        this.svg.classList.add(`${svgClass}--initialize`);
-        this.animation();
-        this.paths();
-    }
-    totalDuration() {
-        return Math.round(this.tl.totalDuration() * 1000);
-    }
-    animation() {
-        this.tl = gsap.timeline({
+        this.tl = this.gsap.timeline({
             onUpdate: this.render,
             defaults: {
                 ease: this.ease,
                 duration: this.duration
             }
         });
+        if (!this.svg) return;
+        this.svg.classList.add(`${svgClass}--initialize`);
+        this.paths();
+    }
+    totalDuration() {
+        return Math.round(this.tl.totalDuration() * 1000);
     }
     paths() {
         this.allPoints = [];
