@@ -49,8 +49,7 @@ const overlay = new ShapeOverlays({
 	delayPoints: 0.3,
 	delayPaths: 0.25,
 	duration: 1,
-	ease: 'power2.inOut',
-	initialState: true
+	ease: 'power2.inOut'
 })
 ```
 | Option           |             Type              | Default  | Description                                                               |
@@ -62,7 +61,6 @@ const overlay = new ShapeOverlays({
 | `delayPaths`     |           `number`            |  `0.25`  | Delay between animation of each path.                                     |
 | `duration`       |           `number`            |    `1`   | Duration of animation.                                                    |
 | `ease`           |           `string`            | `'none'` | Timing function. See [gsap easing](https://greensock.com/docs/v3/Eases).  |
-| `initialState`   |          `boolean`            |  `true`  | The default state is open or closed.                                      |
 <br>
 
 ### API
