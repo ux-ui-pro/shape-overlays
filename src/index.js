@@ -7,11 +7,11 @@ export default class ShapeOverlays {
 		const {
 			svgClass,
 			pathClass,
-			numberPoints = 5,
+			numberPoints = 4,
 			delayPoints = 0.3,
-			delayPaths = 0.2,
+			delayPaths = 0.25,
 			duration = 1,
-			ease = 'power2.inOut'
+			ease = 'none'
 		} = options
 
 		this.gsap = ShapeOverlays.gsap || window.gsap
@@ -27,27 +27,23 @@ export default class ShapeOverlays {
 		this.isOpened = false
 		this.pointsDelay = []
 		this.allPoints = []
-
-		if (!this.svg) return
-
-		this.svg.classList.add(`${svgClass}--initialize`)
-
-		this.animation()
-		this.paths()
-	}
-
-	totalDuration() {
-		return Math.round(this.tl.totalDuration() * 1000)
-	}
-
-	animation() {
-		this.tl = gsap.timeline({
+		this.tl = this.gsap.timeline({
 			onUpdate: this.render,
 			defaults: {
 				ease: this.ease,
 				duration: this.duration
 			}
 		})
+
+		if (!this.svg) return
+
+		this.svg.classList.add(`${svgClass}--initialize`)
+
+		this.paths()
+	}
+
+	totalDuration() {
+		return Math.round(this.tl.totalDuration() * 1000)
 	}
 
 	paths() {

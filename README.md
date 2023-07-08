@@ -17,14 +17,15 @@ Original idea by <a href="https://www.tplh.net/">Yoichi Kobayashi</a></sup></p>
 <br>
 
 ### Installation
+ShapeOverlays requires GSAP library to work.
 ```
 $ yarn add gsap
 $ yarn add shape-overlays
 ```
-
 <br>
 
 ### Import
+Import GSAP, ShapeOverlays and initialize it.
 ```javascript
 import gsap from 'gsap'
 import ShapeOverlays from 'shape-overlays'
@@ -32,27 +33,44 @@ import ShapeOverlays from 'shape-overlays'
 ShapeOverlays.registerGSAP(gsap)
 
 const overlay = new ShapeOverlays({
-	svgClass: 'svg-overlay',
-	pathClass: 'svg-overlay path',
-	numberPoints: 4,
-	delayPoints: 0.7,
-	delayPaths: 0.25,
-	duration: 1.2,
-	ease: 'power2.inOut'
+	svgElement: 'svg-overlay',
+	pathElement: 'svg-overlay path'
 })
-```
-```javascript
-overlay.update()
-
-overlay.toggle()
-
-overlay.entry()
-
-overlay.leave()
-
-overlay.totalDuration()
 ```
 <br>
 
+### Options
+You can configure ShapeOverlays via options.
+```js
+const overlay = new ShapeOverlays({
+	svgClassName: 'svg-overlay',
+	pathClassName: 'svg-overlay path',
+	numberPoints: 4,
+	delayPoints: 0.3,
+	delayPaths: 0.25,
+	duration: 1,
+	ease: 'power2.inOut'
+})
+```
+| Option           |             Type              | Default  | Description                                                               |
+| :--------------- | :---------------------------: | :------: | :------------------------------------------------------------------------ |
+| `svgClassName`   | `string` &vert; `HTMLElement` |  `null`  | **Required.** SVG container selector.                                     |
+| `pathClassName`  | `string` &vert; `HTMLElement` |  `null`  | **Required.** Path selector.                                              |
+| `numberPoints`   |           `number`            |    `4`   | Number of animation points on each path.                                  |
+| `delayPoints`    |           `number`            |   `0.3`  | Delay between animation of each point on path.                            |
+| `delayPaths`     |           `number`            |  `0.25`  | Delay between animation of each path.                                     |
+| `duration`       |           `number`            |    `1`   | Duration of animation.                                                    |
+| `ease`           |           `string`            | `'none'` | Timing function. See [gsap easing](https://greensock.com/docs/v3/Eases).  |
+<br>
+
+### API
+| Method                               | Description                                                                                              |
+| :----------------------------------- | :------------------------------------------------------------------------------------------------------- |
+| `overlay.toggle()`                   | Toggles the animation state between human and closed.                                                    |
+| `overlay.entry()`                    | Sets the animation state to open.                                                                        |
+| `overlay.leave()`                    | Sets the animation state to closed.                                                                      |
+| `overlay.totalDuration()`            | Returns the total duration of the animation in milliseconds.                                             |
+<br>
+
 ### License
-shape-overlays is released under MIT license
+shape-overlays is released under MIT license.
