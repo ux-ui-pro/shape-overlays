@@ -13,11 +13,11 @@ class $4fa36e821943b400$export$2e2bcd8739ae039 {
         $4fa36e821943b400$export$2e2bcd8739ae039.gsap = gsap;
     }
     constructor(options = {}){
-        const { svgClass: svgClass , pathClass: pathClass , numberPoints: numberPoints = 4 , delayPoints: delayPoints = 0.3 , delayPaths: delayPaths = 0.25 , duration: duration = 1 , ease: ease = "none"  } = options;
+        const { svgClassName: svgClassName , pathClassName: pathClassName , numberPoints: numberPoints = 4 , delayPoints: delayPoints = 0.3 , delayPaths: delayPaths = 0.25 , duration: duration = 1 , ease: ease = "none"  } = options;
         this.gsap = $4fa36e821943b400$export$2e2bcd8739ae039.gsap || window.gsap;
-        this.svg = document.querySelector(`.${svgClass}`);
+        this.svg = document.querySelector(`.${svgClassName}`);
         this.path = [
-            ...this.svg?.querySelectorAll(`.${pathClass}`) || []
+            ...this.svg?.querySelectorAll(`.${pathClassName}`) || []
         ];
         this.numberPoints = numberPoints;
         this.numberPaths = this.path.length;
@@ -36,7 +36,7 @@ class $4fa36e821943b400$export$2e2bcd8739ae039 {
             }
         });
         if (!this.svg) return;
-        this.svg.classList.add(`${svgClass}--initialize`);
+        this.svg.classList.add(`${svgClassName}--initialize`);
         this.paths();
     }
     totalDuration() {

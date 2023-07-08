@@ -5,8 +5,8 @@ export default class ShapeOverlays {
 
 	constructor(options = {}) {
 		const {
-			svgClass,
-			pathClass,
+			svgClassName,
+			pathClassName,
 			numberPoints = 4,
 			delayPoints = 0.3,
 			delayPaths = 0.25,
@@ -16,8 +16,8 @@ export default class ShapeOverlays {
 
 		this.gsap = ShapeOverlays.gsap || window.gsap
 
-		this.svg = document.querySelector(`.${svgClass}`)
-		this.path = [...(this.svg?.querySelectorAll(`.${pathClass}`) || [])]
+		this.svg = document.querySelector(`.${svgClassName}`)
+		this.path = [...(this.svg?.querySelectorAll(`.${pathClassName}`) || [])]
 		this.numberPoints = numberPoints
 		this.numberPaths = this.path.length
 		this.delayPoints = delayPoints
@@ -37,7 +37,7 @@ export default class ShapeOverlays {
 
 		if (!this.svg) return
 
-		this.svg.classList.add(`${svgClass}--initialize`)
+		this.svg.classList.add(`${svgClassName}--initialize`)
 
 		this.paths()
 	}
