@@ -3,7 +3,7 @@ class $cf838c15c8b009ba$export$2e2bcd8739ae039 {
         $cf838c15c8b009ba$export$2e2bcd8739ae039.gsap = gsap;
     }
     constructor(options = {}){
-        const { svgClassName: svgClassName , pathClassName: pathClassName , numberPoints: numberPoints = 4 , delayPoints: delayPoints = 0.3 , delayPaths: delayPaths = 0.25 , duration: duration = 1 , ease: ease = "none" , initialState: initialState = true  } = options;
+        const { svgClassName: svgClassName , pathClassName: pathClassName , numberPoints: numberPoints = 4 , delayPoints: delayPoints = 0.3 , delayPaths: delayPaths = 0.25 , duration: duration = 1 , ease: ease = "none"  } = options;
         this.gsap = $cf838c15c8b009ba$export$2e2bcd8739ae039.gsap || window.gsap;
         this.svg = document.querySelector(`.${svgClassName}`);
         this.path = [
@@ -15,7 +15,7 @@ class $cf838c15c8b009ba$export$2e2bcd8739ae039 {
         this.delayPaths = delayPaths;
         this.duration = duration;
         this.ease = ease;
-        this.isOpened = initialState;
+        this.isOpened = false;
         this.pointsDelay = [];
         this.allPoints = [];
         this.tl = this.gsap.timeline({
