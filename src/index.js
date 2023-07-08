@@ -11,7 +11,8 @@ export default class ShapeOverlays {
 			delayPoints = 0.3,
 			delayPaths = 0.25,
 			duration = 1,
-			ease = 'none'
+			ease = 'none',
+			initialState = true
 		} = options
 
 		this.gsap = ShapeOverlays.gsap || window.gsap
@@ -24,7 +25,7 @@ export default class ShapeOverlays {
 		this.delayPaths = delayPaths
 		this.duration = duration
 		this.ease = ease
-		this.isOpened = false
+		this.isOpened = initialState
 		this.pointsDelay = []
 		this.allPoints = []
 		this.tl = this.gsap.timeline({
