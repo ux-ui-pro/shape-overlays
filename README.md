@@ -49,7 +49,8 @@ const overlay = new ShapeOverlays({
 	delayPoints: 0.3,
 	delayPaths: 0.25,
 	duration: 1,
-	ease: 'power2.inOut'
+	ease: 'power2.inOut',
+	initialState: true
 })
 ```
 | Option           |             Type              | Default  | Description                                                               |
@@ -61,15 +62,16 @@ const overlay = new ShapeOverlays({
 | `delayPaths`     |           `number`            |  `0.25`  | Delay between animation of each path.                                     |
 | `duration`       |           `number`            |    `1`   | Duration of animation.                                                    |
 | `ease`           |           `string`            | `'none'` | Timing function. See [gsap easing](https://greensock.com/docs/v3/Eases).  |
+| `initialState`   |          `boolean`            |  `true`  | The default state is open or closed.                                      |
 <br>
 
 ### API
-| Method                               | Description                                                                                              |
-| :----------------------------------- | :------------------------------------------------------------------------------------------------------- |
-| `overlay.toggle()`                   | Toggles the animation state between human and closed.                                                    |
-| `overlay.entry()`                    | Sets the animation state to open.                                                                        |
-| `overlay.leave()`                    | Sets the animation state to closed.                                                                      |
-| `overlay.totalDuration()`            | Returns the total duration of the animation in milliseconds.                                             |
+| Method                               | Description                                                                                      |
+| :----------------------------------- | :----------------------------------------------------------------------------------------------- |
+| `overlay.toggle()`                   | Toggles the animation state between human and closed.                                            |
+| `overlay.entry()`                    | Sets the animation state to open.                                                                |
+| `overlay.leave()`                    | Sets the animation state to closed.                                                              |
+| `overlay.totalDuration()`            | Returns the total duration of the animation in milliseconds.                                     |
 <br>
 
 ### License
