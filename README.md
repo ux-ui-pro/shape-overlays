@@ -33,8 +33,8 @@ import ShapeOverlays from 'shape-overlays'
 ShapeOverlays.registerGSAP(gsap)
 
 const overlay = new ShapeOverlays({
-	svgElement: 'svg-overlay',
-	pathElement: 'svg-overlay path'
+	svgClassName: 'svg-overlay',
+	pathClassName: 'svg-overlay path'
 })
 ```
 <br>
