@@ -1,6 +1,6 @@
 {
   "name": "shape-overlays",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Multi-layered SVG shape overlays that are dynamically generated with adjustable properties are used in creating transitions in SPA or for designing drawer menus",
   "author": "ux-ui.pro",
   "license": "MIT",
@@ -20,11 +20,13 @@
     "clean": "rm -rf dist .parcel-cache"
   },
   "devDependencies": {
-    "parcel": "~2.9.2"
+    "parcel": "~2.9.3"
   },
   "keywords": [
     "shape",
     "overlays",
-    "GSAP"
+    "GSAP",
+    "transition",
+    "SVG"
   ]
 }
