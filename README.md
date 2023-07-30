@@ -33,8 +33,8 @@ import ShapeOverlays from 'shape-overlays'
 ShapeOverlays.registerGSAP(gsap)
 
 const overlay = new ShapeOverlays({
-	svgClassName: 'svg-overlay',
-	pathClassName: 'svg-overlay path'
+	svgClassName: '.svg-overlay',
+	pathClassName: '.svg-overlay path'
 })
 ```
 <br>
@@ -43,8 +43,8 @@ const overlay = new ShapeOverlays({
 You can configure ShapeOverlays via options.
 ```js
 const overlay = new ShapeOverlays({
-	svgClassName: 'svg-overlay',
-	pathClassName: 'svg-overlay path',
+	svgClassName: '.svg-overlay',
+	pathClassName: '.svg-overlay path',
 	numberPoints: 4,
 	delayPoints: 0.3,
 	delayPaths: 0.25,
