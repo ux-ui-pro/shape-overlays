@@ -37,7 +37,7 @@ export default class ShapeOverlays {
 
 		if (!this.svg) return
 
-		this.svg.classList.add(`${svgClassName}--initialize`)
+		this.svg.classList.add(`${svgClassName.replace(/\./g, '')}--initialize`)
 
 		this.paths()
 	}

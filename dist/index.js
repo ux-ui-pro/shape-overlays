@@ -36,7 +36,7 @@ class $4fa36e821943b400$export$2e2bcd8739ae039 {
             }
         });
         if (!this.svg) return;
-        this.svg.classList.add(`${svgClassName}--initialize`);
+        this.svg.classList.add(`${svgClassName.replace(/\./g, "")}--initialize`);
         this.paths();
     }
     totalDuration() {
