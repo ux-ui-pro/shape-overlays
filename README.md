@@ -11,7 +11,7 @@ Original idea by <a href="https://www.tplh.net/">Yoichi Kobayashi</a></sup></p>
 [![NPM Downloads](https://img.shields.io/npm/dm/shape-overlays.svg?style=flat)](https://www.npmjs.org/package/shape-overlays)
 
 <sup>800B gzipped</sup>
-<h3><a href="https://codepen.io/ux-ui/pen/Jjervqg">Demo</a></h3>
+<h3><a href="https://codepen.io/ux-ui/full/Jjervqg">Demo</a></h3>
 
 </div>
 <br>
